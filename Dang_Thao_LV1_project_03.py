@@ -88,9 +88,9 @@ print("\n" + "="*60 + "\n")
 
 director_counts = df[df['director'].notna()]['director'].value_counts()
 
-print("Top 10 đạo diễn có nhiều phim nhất:")
-for i, (director, count) in enumerate(director_counts.head(10).items(), 1):
-    print(f"{i:2d}. {director}: {count} phim")
+top_director = director_counts.idxmax()
+top_director_count = director_counts.max()
+print(f"Đạo diễn có nhiều phim nhất: {top_director}: {top_director_count} phim")
 
 
 actor_counts = {}
@@ -102,10 +102,9 @@ for cast_list in df[df['cast'].notna()]['cast']:
                 actor_counts[actor] = actor_counts.get(actor, 0) + 1
 
 sorted_actors = sorted(actor_counts.items(), key=lambda x: x[1], reverse=True)
+top_actor, top_actor_count = sorted_actors[0]
+print(f"Diễn viên xuất hiện nhiều nhất: {top_actor}: {top_actor_count} phim")
 
-print("Top 10 diễn viên xuất hiện nhiều nhất:")
-for i, (actor, count) in enumerate(sorted_actors[:10], 1):
-    print(f"{i:2d}. {actor}: {count} phim")
 print("Đã hoàn thành task 6")
 print("\n" + "="*60 + "\n")
 
